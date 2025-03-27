@@ -32,7 +32,7 @@ async function fetchRepos() {
     }
     
     try {
-        let response = await fetch(`http://localhost:5000/api/user/${username}/repos`);
+        let response = await fetch(`https://github-user-details-checker.onrender.com/api/user/${username}/repos`);
         let repos = await response.json();
         let repoList = repos.map(repo => `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`).join('');
         document.getElementById("result").innerHTML = `<h3>Repositories:</h3><ul>${repoList}</ul>`;
@@ -49,7 +49,7 @@ async function fetchCommits() {
     }
     
     try {
-        let response = await fetch(`http://localhost:5000/api/user/${username}/commits`);
+        let response = await fetch(`https://github-user-details-checker.onrender.com/api/user/${username}/commits`);
         let data = await response.json();
         document.getElementById("result").innerHTML = `<h3>Total Commits: ${data.totalCommits}</h3>`;
     } catch (error) {
